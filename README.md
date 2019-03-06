@@ -2,6 +2,7 @@
 ## Goal: Generate a Heat Map of terror attacks in European countries from 1970-2014
 
 ## DAG File
+### Imports
 ```Python3
 from __future__ import print_function
 import time
@@ -15,7 +16,9 @@ import pandas as pd
 import seaborn as sns
 from EU_methods import(heatMap, load, count_records, count_columns, list_countries, Belgium, Denmark, France,
                        Germany, Greece, Ireland, Italy, Luxembourg, Netherlands, Portugal, Spain, United_Kingdom)
-
+```
+### DAG Config
+```Python3
 args = {
     'owner': 'airflow',
     'start_date': airflow.utils.dates.days_ago(2),
@@ -27,7 +30,9 @@ dag = DAG(
     default_args=args,
     schedule_interval=None,
 )
-
+```
+### Tasks
+```Python3
 #---------------------------#
 #           TASKS           #
 #---------------------------#
@@ -85,7 +90,7 @@ def map(ds, **kwargs):
     heatMap()
     return 'Heat Map Generated'
 ```
-
+### Operators
 ```Python3
 #---------------------------#
 #         Operators         #
@@ -198,7 +203,7 @@ p = PythonOperator(
     dag=dag,
 )
 ```
-
+### Dependency Mapping
 ```Python3
 #---------------------------#
 #        Dependencies       #
@@ -215,6 +220,7 @@ p.set_upstream([d, e, f, g, h, i, j, k, l, m, n, o])
 ```
 
 ## Method File 
+### Imports
 ```Python3
 import pandas as pd
 import numpy as np
@@ -226,33 +232,43 @@ import os
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 location_list = []
+```
 
-
+### Load File
+```Python3
 def load():
     file_source = r"/root/airflow/dags/eu_terrorism_fatalities_by_country.csv"
     df = pd.read_csv(file_source)
     file_destination = r"/root/airflow/dags/EU_Folder/EU_DataFrame.csv"
     df.to_csv(file_destination)
+```
 
-
+### Count Total Records in Dataset
+```Python3
 def count_records():
     file_source = r"/root/airflow/dags/EU_Folder/EU_DataFrame.csv"
     df = pd.read_csv(file_source)
     print("Collected {} records".format(len(df)))
+```
 
-
+### Count Countries Included
+```Python3
 def count_columns():
     file_source = r"/root/airflow/dags/EU_Folder/EU_DataFrame.csv"
     df = pd.read_csv(file_source)
     print("Contains: {} columns".format(len(df.columns)))
+```
 
-
+### View Countries
+```Python3
 def list_countries():
     file_source = r"/root/airflow/dags/EU_Folder/EU_DataFrame.csv"
     df = pd.read_csv(file_source)
     print("Countries: {}".format(list(df.columns)))
+```
 
-
+### ETL - Slice Countries, Build DataFrame, Generate Individual Files
+```Python3
 def Belgium():
     global location_list
     file_source = r"/root/airflow/dags/EU_Folder/EU_DataFrame.csv"
@@ -370,8 +386,9 @@ def United_Kingdom():
     df = df['United Kingdom']
     file_destination = r"/root/airflow/dags/EU_Folder/United Kingdom.csv"
     df.to_csv(file_destination,  index=False)
-
-
+```
+## Generate HeatMap 
+```Python3
 def heatMap():
     file_source = r"/root/airflow/dags/eu_terrorism_fatalities_by_country.csv"
     df = pd.read_csv(file_source)
@@ -386,6 +403,6 @@ def heatMap():
     # Apply yticks
     plt.yticks(range(len(df.index)), df.index)
     plt.tight_layout()
-    plt.savefig(r'C:\Users\\andrew.holt\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\\rootfs\\root\\airflow\dags\EU_Folder\\hm_output.png')
+    plt.savefig(...home/example_location/output_folder)
 ```
 
