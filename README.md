@@ -1,12 +1,15 @@
 # Airflow DAG     
 ## Generate a Heat Map of terror attacks in European countries from 1970-2014 through Apache Airflow
 
-## Output
-<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Figure_1.png" class="inline"/><br>
-
+## Data
+<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/data_shot.png" class="inline"/><br>
 
 ## DAG Graph View
 <img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Graph_View1.png" class="inline"/><br>
+
+## Output
+<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Figure_1.png" class="inline"/><br>
+
 
 ## DAG File
 ### Imports
