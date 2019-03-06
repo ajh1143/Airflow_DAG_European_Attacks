@@ -6,7 +6,7 @@
 
 
 ## DAG Graph View
-<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Graph_View.png" class="inline"/><br>
+<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Graph_View1.png" class="inline"/><br>
 
 ## DAG File
 ### Imports
