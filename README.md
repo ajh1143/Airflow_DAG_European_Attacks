@@ -1,7 +1,7 @@
 # Airflow DAG     
 ## Goal: Generate a Heat Map of terror attacks in European countries from 1970-2014
 
-<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/img/Figure_1.png" class="inline"/><br>
+<img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Figure_1.png" class="inline"/><br>
 
 
 
