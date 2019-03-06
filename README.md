@@ -3,13 +3,13 @@
 ---
 ## Data
 <img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/data_shot.png" class="inline"/><br>
-
+---
 ## DAG Graph View
 <img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Graph_View1.png" class="inline"/><br>
-
+---
 ## Output
 <img src="https://github.com/ajh1143/Airflow_DAG_European_Attacks/blob/master/Figure_1.png" class="inline"/><br>
-
+---
 
 ## DAG File
 ### Imports
@@ -41,6 +41,7 @@ dag = DAG(
     schedule_interval=None,
 )
 ```
+---
 ### Tasks
 ```Python3
 #---------------------------#
@@ -134,6 +135,7 @@ def map(ds, **kwargs):
     
     
 ```
+---
 ### Operators
 ```Python3
 #---------------------------#
@@ -270,6 +272,7 @@ p = PythonOperator(
 
 
 ```
+---
 ### Dependency Mapping
 ```Python3
 #---------------------------#
@@ -285,6 +288,7 @@ b.set_downstream(c)
 c.set_downstream([d, e, f, g, h, i, j, k, l, m, n, o])
 p.set_upstream([d, e, f, g, h, i, j, k, l, m, n, o])
 ```
+---
 
 ## Method File 
 ### Imports
@@ -454,6 +458,7 @@ def United_Kingdom():
     file_destination = r"/root/airflow/dags/EU_Folder/United Kingdom.csv"
     df.to_csv(file_destination,  index=False)
 ```
+---
 ## Generate HeatMap 
 ```Python3
 def heatMap():
@@ -472,4 +477,4 @@ def heatMap():
     plt.tight_layout()
     plt.savefig(...home/example_location/output_folder)
 ```
-
+---
